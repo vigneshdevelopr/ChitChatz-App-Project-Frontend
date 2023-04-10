@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+// import React from 'react'
+// import styled from 'styled-components'
 
-function Chat() {
-  return (
-    <Container>Chat</Container>
-  )
-}
+// function Chat() {
+//   return (
+//     <Container>Chat</Container>
+//   )
+// }
 
-export default Chat
+// export default Chat
 
-const Container = styled.div`
-height: 70%;
+// const Container = styled.div`
+// height: 70%;
 
-`
+// `

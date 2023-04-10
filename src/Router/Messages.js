@@ -36,7 +36,7 @@ useEffect(()=>{
   if(currentUser){
     socket.current = io(url)
     socket.current.emit("add-user", currentUser._id)
-  }
+ }
 },[currentUser])
 
 

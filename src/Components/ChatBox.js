@@ -33,9 +33,7 @@ function ChatBox({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
-    const data = await JSON.parse(
-      localStorage.getItem("ChitChatz-user")
-    );
+    const data = await JSON.parse(localStorage.getItem("ChitChatz-user"));
     await axios.post(AddMessageRoute, {
       from: data._id,
       to: currentChat._id,
@@ -46,7 +44,7 @@ function ChatBox({ currentChat, currentUser, socket }) {
       from: data._id,
       msg,
     });
-    
+
     const msgs = [...allmsg];
     msgs.push({ fromSelf: true, message: msg });
     setAllmsg(msgs);
@@ -54,8 +52,8 @@ function ChatBox({ currentChat, currentUser, socket }) {
 
   useEffect(() => {
     if (socket.current) {
-      socket.current.on("msg-receive", (msg) => {
-        setMessageArrived({ fromSelf: false, message: msg });
+      socket.current.on("msg-receive", (message) => {
+        setMessageArrived({ fromSelf: false, message: message });
       });
     }
   }, []);
@@ -89,7 +87,7 @@ function ChatBox({ currentChat, currentUser, socket }) {
                 <div ref={scrollRef} key={uuidv4()}>
                   <div
                     className={`message ${
-                      message.fromSelf ? "sended" : "recieved"
+                      message.fromSelf ? "sended" : "received"
                     }`}
                   >
                     <div className="content ">
