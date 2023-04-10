@@ -24,6 +24,17 @@ function ChatBox({ currentChat, currentUser,socket }) {
    
   }, [currentChat]);
 
+  useEffect(() => {
+    const getCurrentChat = async () => {
+      if (currentChat) {
+        await JSON.parse(
+          localStorage.getItem("ChitChatz-user")
+        )._id;
+      }
+    };
+    getCurrentChat();
+  }, [currentChat]);
+
   const handleSendMsg = async (msg) => {
     await axios.post(AddMessageRoute, {
       from: currentUser._id,
