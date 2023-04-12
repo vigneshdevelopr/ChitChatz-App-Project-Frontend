@@ -51,7 +51,7 @@ function Login() {
   });
   const history = useHistory();
   useEffect(() => {
-    if (localStorage.getItem("ChitChatz-user")) {
+    if (localStorage.getItem("react_token")) {
       history.push("/messages");
     }
   }, []);
@@ -73,8 +73,12 @@ function Login() {
         toast.error(data.message, toastify);
       }
       if (data.status === true) {
+        console.log(data)
         toast.success("Login Successfully", toastify);
         localStorage.setItem("ChitChatz-user",JSON.stringify(data.users));
+        console.log(data.token)
+        localStorage.setItem("react_token", data.token)
+localStorage.setItem('ChitChatz-email', data.users.email)
         history.push("/messages");
       }
     }
