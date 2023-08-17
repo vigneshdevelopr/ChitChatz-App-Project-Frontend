@@ -46,6 +46,14 @@ useEffect(()=>{
       if (currentUser) {
         try {
           const data = await axios.get(`${FriendsRoute}/${currentUser._id}`)
+          // const response = await fetch(`${FriendsRoute}/${currentUser._id}`,{
+          //   method:'GET',
+          //   body:JSON.stringify(),
+          //   headers:{
+          //     'content-type':'application/json'
+          //   }
+          // })
+          // const data = await response.json()
           console.log(currentUser._id);
           setFriends(data.data)
         } catch (error) {
