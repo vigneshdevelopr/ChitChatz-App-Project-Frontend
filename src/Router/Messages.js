@@ -34,7 +34,12 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io('https://chatappserver.vercel.app')
+    socket.current = io('https://chatappserver.vercel.app',{
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd"
+      }
+    })
     socket.current.emit("add-user", currentUser._id)
  }
 },[currentUser])
