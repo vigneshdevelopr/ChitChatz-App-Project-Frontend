@@ -34,12 +34,7 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io('https://chatappserver.vercel.app',{
-      withCredentials: true,
-      extraHeaders: {
-        "my-custom-header": "abcd"
-      }
-    })
+    socket.current = io('https://chatappserver.vercel.app')
     socket.current.emit("add-user", currentUser._id)
  }
 },[currentUser])
@@ -62,7 +57,7 @@ useEffect(()=>{
           console.log(currentUser._id);
           setFriends(data.data)
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
         }
       }
     }
