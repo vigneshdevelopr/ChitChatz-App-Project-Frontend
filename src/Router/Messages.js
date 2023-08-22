@@ -36,6 +36,7 @@ useEffect(()=>{
   if(currentUser){
     socket.current = io(url,{
       withCredentials: true,
+      transports: ["websocket"],
       extraHeaders: {
         "my-custom-header": "abcd"
       }
