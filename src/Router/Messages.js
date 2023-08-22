@@ -13,14 +13,7 @@ const Messages = () => {
   const socket = useRef();
 
 
-   socket.current = io(url, {
-    withCredentials: true,
-    transports: ['websocket', 'polling'],
-    upgrade: false,
-    extraHeaders: {
-      'my-custom-header': 'abcd'
-    }
-  });
+
   const history = useHistory();
   const [Friends, setFriends] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -41,6 +34,14 @@ const Messages = () => {
   }, []);
 
   useEffect(() => {
+    socket.current = io(url, {
+      withCredentials: true,
+      transports: ['websocket', 'polling'],
+      upgrade: false,
+      extraHeaders: {
+        'my-custom-header': 'abcd'
+      }
+    });
     if (currentUser) {
       socket.current.on('connection-successful',(data)=>{
         console.log('received data from connection',data);
