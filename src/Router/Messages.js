@@ -7,7 +7,6 @@ import Welcome from '../Components/welcome';
 import ChatBox from '../Components/ChatBox';
 import {io}from 'socket.io-client'
 
-const urls="wss://chit-chatz-app-project-backend.vercel.app"
 
 
 function Messages() {
@@ -37,9 +36,10 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io(urls,{
+    socket.current = io('/',{
       withCredentials: true,
       transports: ["websocket","polling"],
+      upgrade:false,
       extraHeaders: {
         "my-custom-header": "abcd"
       }
