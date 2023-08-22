@@ -7,9 +7,21 @@ import Welcome from '../Components/welcome';
 import ChatBox from '../Components/ChatBox';
 import { io } from 'socket.io-client';
 
+
+
 const Messages = () => {
-  const history = useHistory();
   const socket = useRef();
+
+
+   socket.current = io(url, {
+    withCredentials: true,
+    transports: ['websocket', 'polling'],
+    upgrade: false,
+    extraHeaders: {
+      'my-custom-header': 'abcd'
+    }
+  });
+  const history = useHistory();
   const [Friends, setFriends] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
@@ -30,14 +42,9 @@ const Messages = () => {
 
   useEffect(() => {
     if (currentUser) {
-      socket.current = io(url, {
-        withCredentials: true,
-        transports: ['websocket', 'polling'],
-        upgrade: false,
-        extraHeaders: {
-          'my-custom-header': 'abcd'
-        }
-      });
+      socket.current.on('connection-successful',(data)=>{
+        console.log('received data from connection',data);
+      })
       socket.current.emit('add-user', currentUser._id);
 
       return () => {
