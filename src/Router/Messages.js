@@ -1,7 +1,7 @@
 import React, { useEffect, useState,useRef } from 'react'
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-import { FriendsRoute } from '../utils/Routes';
+import { FriendsRoute, url } from '../utils/Routes';
 import AllFriends from '../Components/Friends';
 import Welcome from '../Components/welcome';
 import ChatBox from '../Components/ChatBox';
@@ -34,7 +34,12 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io('https://chatappserver.vercel.app')
+    socket.current = io(url,{
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd"
+      }
+    })
     socket.current.emit("add-user", currentUser._id)
  }
 },[currentUser])
