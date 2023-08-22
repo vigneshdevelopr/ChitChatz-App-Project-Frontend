@@ -10,7 +10,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Logo from '../assets/signuplogo.png'
-import './signup.css'
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -224,7 +223,7 @@ const handleValidate = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link onClick={()=>history.push('/')} variant="body2">
+                <Link className="createloginbtn" onClick={()=>history.push('/')} variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

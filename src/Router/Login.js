@@ -175,7 +175,7 @@ localStorage.setItem('ChitChatz-email', data.users.email)
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link onClick={() => history.push("/signup")} variant="body2">
+                  <Link className="createloginbtn" onClick={() => history.push("/signup")} variant="body2">
                     Don't have an account? Sign in
                   </Link>
                 </Grid>

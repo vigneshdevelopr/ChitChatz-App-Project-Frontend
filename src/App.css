@@ -25,6 +25,15 @@ gap: 2cm;
 }
 }
 
+.createloginbtn:hover{
+cursor: pointer;
+color: darkslategrey !important;
+
+}
+.createloginbtn{
+    text-decoration: none !important;
+    color: black !important;
+}
 
 
 .page{
