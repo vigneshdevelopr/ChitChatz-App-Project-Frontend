@@ -36,7 +36,7 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io('wss://www.chitchatzapp.netlify.app',{
+    socket.current = io('wss://chitchatzapp.netlify.app',{
       withCredentials: true,
       transports: ["websocket","polling"],
       upgrade:false,
