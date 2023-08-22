@@ -1,4 +1,4 @@
-export const url = "wss://chit-chatz-app-project-backend.vercel.app"
+export const url = "https://chit-chatz-app-project-backend.vercel.app"
 // export const url = 'http://localhost:5000'
 export const signupRoute = `${url}/api/auth/signup`;
 export const loginRoute = `${url}/api/auth/login`;
