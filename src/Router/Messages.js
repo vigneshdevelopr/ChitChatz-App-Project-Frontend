@@ -34,7 +34,12 @@ function Messages() {
 
 useEffect(()=>{
   if(currentUser){
-    socket.current = io(url)
+    socket.current = io(url,{
+      withCredentials:true,
+      extraHeaders:{
+        "my-custom-header":"abcd"
+      }
+    })
     socket.current.emit("add-user", currentUser._id)
  }
 },[currentUser])
