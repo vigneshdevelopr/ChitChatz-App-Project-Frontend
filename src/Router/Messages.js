@@ -15,6 +15,7 @@ function Messages() {
   const[currentUser, setCurrentUser] = useState(undefined)
   const[currentChat, setCurrentChat]= useState(undefined)
   const[loaded, setLoaded] = useState(false)
+  const[connection,setConnection]=useState(false)
   useEffect(()=>{
     async function fetchedData(){
       
@@ -42,6 +43,7 @@ useEffect(()=>{
       }
     })
     socket.current.emit("add-user", currentUser._id)
+    socket.current.on("connection",()=>setConnection(true))
  }
 },[currentUser])
 
