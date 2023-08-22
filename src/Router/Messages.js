@@ -43,7 +43,6 @@ useEffect(()=>{
       }
     })
     socket.current.emit("add-user", currentUser._id)
-    socket.current.on("connection",()=>setConnection(true))
  }
 },[currentUser])
 
