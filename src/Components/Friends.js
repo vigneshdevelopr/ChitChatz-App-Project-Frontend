@@ -12,13 +12,13 @@ export default function AllFriends({ Friends, changeChat }) {
       setCurrentUserName(data.firstName);
       setCurrentUserImage(data.avatarImage);
     }
-    fetchData()
+    fetchData();
   });
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
   };
-  return (  
+  return (
     <>
       {currentUserImage && currentUserImage && (
         <Container>
@@ -29,7 +29,6 @@ export default function AllFriends({ Friends, changeChat }) {
           <div className="contacts">
             {Friends.map((contact, index) => {
               return (
-
                 <div
                   key={contact._id}
                   className={`contact ${
@@ -38,10 +37,7 @@ export default function AllFriends({ Friends, changeChat }) {
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="avatar">
-                    <img
-                      src={contact.avatarImage}
-                      alt=""
-                    />
+                    <img src={contact.avatarImage} alt="" />
                   </div>
                   <div className="username">
                     <h3>{contact.firstName}</h3>
@@ -49,11 +45,11 @@ export default function AllFriends({ Friends, changeChat }) {
                 </div>
               );
             })}
-            
           </div>
           <div className="current-user">
             <div className="avatar">
-              <img style={{width:'2rem', height:'2rem'}}
+              <img
+                style={{ width: "2rem", height: "2rem" }}
                 src={currentUserImage}
                 alt="avatar"
               />
@@ -71,7 +67,8 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
-  background-color: #D143BD;
+
+  background-color: #202c33;
   .brand {
     display: flex;
     align-items: center;
@@ -81,7 +78,7 @@ const Container = styled.div`
       height: 2rem;
     }
     h3 {
-      color: white;
+      color: #d9dee0;
       text-transform: uppercase;
     }
   }
@@ -117,7 +114,7 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: #d9dee0;
         }
       }
     }
@@ -126,7 +123,7 @@ const Container = styled.div`
     }
   }
   .current-user {
-    background-color: #8941FD;
+    background-color: #42cba5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +136,12 @@ const Container = styled.div`
     }
     .username {
       h2 {
-        color: white;
+        color: black;
+        font-size: larger !important;
+
+        :hover {
+          cursor: pointer;
+        }
       }
     }
     @media screen and (min-width: 720px) and (max-width: 1080px) {
