@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 import { signupRoute } from "../utils/Routes";
 import { useEffect } from "react";
+import Loading from "../Components/Spinner";
 
 function Copyright(props) {
   return (
@@ -39,6 +40,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 function Signup() {
+  const[load,setLoad]=useState(false)
   const history = useHistory();
 
   const[value, setValue]= useState({
@@ -81,8 +83,12 @@ const handleValidate = () => {
 };
   const handleSubmit = async(event) => {
     event.preventDefault();
+    try {
+      
+    
    if(handleValidate()){
     const { firstName, lastName, email, password, confirmpassword } = value;
+    setLoad(true)
     const {data} = await axios.post(signupRoute,{
       firstName,
       lastName,
@@ -101,6 +107,11 @@ const handleValidate = () => {
     }
 
    }
+  } catch (error) {
+      console.log(error)
+  } finally{
+    setLoad(false)
+  }
   };
  
   // useEffect(()=>{
@@ -123,6 +134,10 @@ const handleValidate = () => {
   
   
   return (
+    <div>
+{load?(<Loading />):(
+
+
     <div style={{backgroundColor:'white', height:'100vh'}} >
     <ThemeProvider theme={theme}>
       <Container style={{backgroundColor:'whitesmoke' ,borderRadius:8}}   component="main" maxWidth="xs">
@@ -237,6 +252,9 @@ const handleValidate = () => {
     <ToastContainer />
 
    </div>
+   )}
+   </div>
+
   );
 }
 
