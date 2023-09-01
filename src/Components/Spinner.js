@@ -4,9 +4,9 @@ import styled from 'styled-components';
 function Loading() {
   return (
     <>
-    <Heading>
+    {/* <Heading>
 Dear Users, Please wait a moment to get started server. <span style={{fontStyle:'italic',color:'yellow',backgroundColor:'black',fontWeight:'500',width:'fit-content',padding:'0.5rem'}}>Because i hosted the server by Free plan.</span> It goes shutdown When the site is inactive. It takes time to Cold Start the Server upto 30 to 40 Seconds. Thanks for your patience.
-  </Heading>
+  </Heading> */}
     <Divison>
     <SpinnerContainer>
     <Spinner />
